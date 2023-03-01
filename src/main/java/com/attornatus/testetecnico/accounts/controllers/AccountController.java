@@ -29,5 +29,9 @@ public class AccountController {
     public ResponseEntity<AccountDTO> registerAccount(@RequestBody AccountDTO accountDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(accountService.saveAccount(accountDTO));
     }
+    @PatchMapping("/{id}")
+    public ResponseEntity<AccountDTO> updateAccount(@PathVariable Long id, @RequestBody AccountDTO accountDTO) {
+        return ResponseEntity.status(HttpStatus.OK).body(accountService.updateAccount(id, accountDTO));
+    }
 
 }

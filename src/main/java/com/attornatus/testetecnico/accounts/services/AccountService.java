@@ -48,4 +48,19 @@ public class AccountService {
         }
         throw new ResourceNotFoundException("Account not found with id: " + id);
     }
+
+    public AccountDTO updateAccount(Long id, AccountDTO accountDTO) {
+
+        var account  = accountRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Account not found with id: " + id));
+        if (accountDTO.getName() != null) {
+            account.setName(accountDTO.getName());
+        }
+        if(accountDTO.getBirthday() != null){
+            account.setBirthday(accountDTO.getBirthday());
+        }
+
+        Account updatedAccount = accountRepository.save(account);
+
+        return new AccountDTO(updatedAccount);
+    }
 }
