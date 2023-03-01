@@ -4,14 +4,14 @@ import com.attornatus.testetecnico.accounts.repositories.AccountRepository;
 import com.attornatus.testetecnico.accounts.repositories.entities.Account;
 import com.attornatus.testetecnico.accounts.services.dto.AccountDTO;
 
+import com.attornatus.testetecnico.exceptiions.ResourceNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+//import java.time.LocalDateTime;
+//import java.time.format.DateTimeFormatter;
+import java.util.*;
+
 
 @Service
 public class AccountService {
@@ -41,8 +41,11 @@ public class AccountService {
         return new AccountDTO(account);
     }
 
-    public Optional<Account> getAccountById(String id) {
-        return accountRepository.findById(id);
+    public AccountDTO findAccountById(Long id) {
+        Optional<Account> account = accountRepository.findById(id);
+        if (account.isPresent()) {
+            return new AccountDTO(account.get());
+        }
+        throw new ResourceNotFoundException("Account not found with id: " + id);
     }
-
 }
