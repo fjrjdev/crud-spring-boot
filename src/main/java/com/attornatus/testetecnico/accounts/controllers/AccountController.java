@@ -16,11 +16,15 @@ public class AccountController {
     @Autowired
     private AccountService accountService;
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<ArrayList<Object>> getAllAccounts() {
         return ResponseEntity.status(HttpStatus.ACCEPTED).body(accountService.findAllAccounts());
     }
+    @GetMapping("/{id}")
+    public  ResponseEntity<AccountDTO> getAccountById(@PathVariable Long id){
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(accountService.findAccountById(id));
 
+    }
     @PostMapping()
     public ResponseEntity<AccountDTO> registerAccount(@RequestBody AccountDTO accountDTO) {
         return ResponseEntity.status(HttpStatus.CREATED).body(accountService.saveAccount(accountDTO));
