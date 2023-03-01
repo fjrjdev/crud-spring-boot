@@ -1,32 +1,27 @@
 package com.attornatus.testetecnico.accounts.repositories.entities;
 
-import org.hibernate.annotations.GenericGenerator;
-
 import javax.persistence.*;
-import java.util.UUID;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "account")
 public class Account {
-    // TODO ALTERAR ID
+
     @Id
-    @GeneratedValue(generator = "account_uuid_generator")
-    @GenericGenerator(name = "account_uuid_generator", strategy = "uuid2")
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
     @Column(name = "name")
     private String name;
-    // TODO ALTERAR TIPO CAMPO DE DATA LOCALDATETIME()
-    @Column(name = "birthDate")
-    private String birthDate;
 
 
+    @Column(name = "birthday")
+    private String birthday;
 
-    public UUID getId() {
+//    @Column(name = "birthday")
+//    private LocalDateTime birthday;
+
+    public long getId() {
         return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
     }
 
     public String getName() {
@@ -37,11 +32,18 @@ public class Account {
         this.name = name;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
+//    public LocalDateTime getBirthday() {
+//        return birthday;
+//    }
+//
+//    public void setBirthday(LocalDateTime birthday) {
+//        this.birthday = birthday;
+//    }
 }

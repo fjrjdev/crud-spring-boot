@@ -1,28 +1,31 @@
 package com.attornatus.testetecnico.accounts.services.dto;
 
 import com.attornatus.testetecnico.accounts.repositories.entities.Account;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.util.UUID;
+import java.time.LocalDateTime;
+
 
 public class AccountDTO {
 
-    private UUID id;
+    private Long id;
     private String name;
-    private String birthDate;
+    @JsonFormat(pattern = "dd-MM-yyyy")
+    private String birthday;
 
     public AccountDTO (){}
 
     public AccountDTO(Account account){
         this.id = account.getId();
         this.name = account.getName();
-        this.birthDate = account.getBirthDate();
+        this.birthday = account.getBirthday();
     }
 
-    public UUID getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -34,11 +37,13 @@ public class AccountDTO {
         this.name = name;
     }
 
-    public String getBirthDate() {
-        return birthDate;
+    public String getBirthday() {
+        return birthday;
     }
 
-    public void setBirthDate(String birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
     }
+
+
 }
