@@ -32,7 +32,7 @@ public class GlobalExceptionHandler {
         }
     }
     @ExceptionHandler(value = {ResourceNotFoundException.class})
-    public ResponseEntity<Object> handleCustomException(ResourceNotFoundException ex) {
+    public ResponseEntity<Object> handleNotFoundException(ResourceNotFoundException ex) {
         HttpStatus status = HttpStatus.NOT_FOUND;
         var errorResponse = new ErrorResponse(ex.getMessage(),status);
         return ResponseEntity.status(status).body(errorResponse);
@@ -41,7 +41,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Object> handleAllExceptions(Exception ex) {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-        String message = "Erro interno do servidor";
+        String message = "Internal server error occurred during the process";
         var errorResponse = new ErrorResponse(message, status);
         return ResponseEntity.status(status).body(errorResponse);
     }
