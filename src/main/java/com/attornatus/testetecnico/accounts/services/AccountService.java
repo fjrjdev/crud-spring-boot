@@ -3,13 +3,11 @@ package com.attornatus.testetecnico.accounts.services;
 import com.attornatus.testetecnico.accounts.repositories.AccountRepository;
 import com.attornatus.testetecnico.accounts.repositories.entities.Account;
 import com.attornatus.testetecnico.accounts.services.dto.AccountDTO;
-
 import com.attornatus.testetecnico.exceptiions.ResourceNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-//import java.time.LocalDateTime;
-//import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 

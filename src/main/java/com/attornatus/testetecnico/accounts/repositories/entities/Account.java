@@ -1,24 +1,20 @@
 package com.attornatus.testetecnico.accounts.repositories.entities;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+
 
 @Entity
 @Table(name = "account")
 public class Account {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @Column(name = "name")
     private String name;
 
-
     @Column(name = "birthday")
-    private String birthday;
-
-//    @Column(name = "birthday")
-//    private LocalDateTime birthday;
+    private LocalDate birthday;
 
     public long getId() {
         return id;
@@ -32,18 +28,11 @@ public class Account {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
-//    public LocalDateTime getBirthday() {
-//        return birthday;
-//    }
-//
-//    public void setBirthday(LocalDateTime birthday) {
-//        this.birthday = birthday;
-//    }
 }

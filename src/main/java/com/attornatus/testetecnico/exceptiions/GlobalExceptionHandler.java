@@ -3,6 +3,8 @@ package com.attornatus.testetecnico.exceptiions;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import static org.hibernate.tool.schema.SchemaToolingLogging.LOGGER;
+
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -40,6 +42,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(value = {Exception.class})
     public ResponseEntity<Object> handleAllExceptions(Exception ex) {
+        LOGGER.error("dadsa", ex);
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         String message = "Internal server error occurred during the process";
         var errorResponse = new ErrorResponse(message, status);

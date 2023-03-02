@@ -3,15 +3,15 @@ package com.attornatus.testetecnico.accounts.services.dto;
 import com.attornatus.testetecnico.accounts.repositories.entities.Account;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 
 public class AccountDTO {
 
     private Long id;
     private String name;
-    @JsonFormat(pattern = "dd-MM-yyyy")
-    private String birthday;
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDate birthday;
 
     public AccountDTO (){}
 
@@ -37,11 +37,11 @@ public class AccountDTO {
         this.name = name;
     }
 
-    public String getBirthday() {
+    public LocalDate getBirthday() {
         return birthday;
     }
 
-    public void setBirthday(String birthday) {
+    public void setBirthday(LocalDate birthday) {
         this.birthday = birthday;
     }
 
